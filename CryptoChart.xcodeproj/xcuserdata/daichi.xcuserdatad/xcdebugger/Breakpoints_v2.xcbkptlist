@@ -20,5 +20,53 @@
             landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B290DB8D-69B6-4CA7-A044-CC321E6A102E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CryptoChart/Models/CoinModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "CoinModel"
+            landmarkType = "14">
+            <Locations>
+               <Location
+                  uuid = "B290DB8D-69B6-4CA7-A044-CC321E6A102E - b48ace0d0436a4c8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Crypto_Chart.CoinModel.CodingKeys.init(rawValue: Swift.String) -&gt; Swift.Optional&lt;Crypto_Chart.CoinModel.CodingKeys&gt;"
+                  moduleName = "Crypto Chart"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/daichi/Documents/CryptoChart/CryptoChart/Models/CoinModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "77"
+                  endingLineNumber = "77"
+                  offsetFromSymbolStart = "592">
+               </Location>
+               <Location
+                  uuid = "B290DB8D-69B6-4CA7-A044-CC321E6A102E - 6847d3d3cfc2e43b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Crypto_Chart.CoinModel.CodingKeys.rawValue.getter : Swift.String"
+                  moduleName = "Crypto Chart"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/daichi/Documents/CryptoChart/CryptoChart/Models/CoinModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "77"
+                  endingLineNumber = "77"
+                  offsetFromSymbolStart = "244">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
