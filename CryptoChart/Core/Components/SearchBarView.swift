@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SearchBarView: View {
     @Binding var searchText: String
-    @FocusState private var nameIsFocused: Bool
+    @FocusState var nameIsFocused: Bool
     
     var body: some View {
         HStack {
