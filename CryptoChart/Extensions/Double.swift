@@ -100,8 +100,8 @@ extension Double {
             let formatted = num / 1_000_000
             let stringFormatted = formatted.asNumberString()
             return "\(sign)\(stringFormatted)M"
-        case 1_000_000...:
-            let formatted = num / 1_000_000
+        case 1_000...:
+            let formatted = num / 1_000
             let stringFormatted = formatted.asNumberString()
             return "\(sign)\(stringFormatted)K"
         case 0...:
