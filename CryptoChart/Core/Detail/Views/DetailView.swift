@@ -24,6 +24,7 @@ struct DetailLoadingView: View {
 struct DetailView: View {
     
     @ObservedObject var vm: DetailViewModel
+    @State private var showFullDescription = false
     
     private let columns: [GridItem] = [
         GridItem(.flexible()),
@@ -37,18 +38,19 @@ struct DetailView: View {
     }
     
     var body: some View {
-        ScrollView {
+        ScrollView(.vertical, showsIndicators: false) {
             VStack {
                 ChartVIew(coin: vm.coin)
                 
                 VStack(spacing: 20) {                    
                     overviewTitle
-                    Divider()
+                   // Divider()
+                    descriptionSection
                     overviewGrid
-                    
                     addtionalTitle
-                    Divider()
+                  //  Divider()
                     addtionalGrid
+                    websiteSection
                 }
                 .padding()
             }
@@ -122,5 +124,49 @@ extension DetailView {
                 StatisticView(stat: stat)
             }
         })
+    }
+    
+    var descriptionSection: some View {
+        ZStack {
+            if let coinDescription = vm.coinDescription,
+               !coinDescription.isEmpty {
+                
+                VStack(alignment: .leading) {
+                    Text(coinDescription.removingHTMLOccurances)
+                        .font(.callout)
+                        .foregroundColor(.theme.secondaryText)
+                        .lineLimit(showFullDescription ? nil : 3)
+
+                    Button {
+                        withAnimation {
+                            showFullDescription.toggle()
+                        }
+                    } label: {
+                        Text(showFullDescription ? "Less" : "Read more...")
+                            .font(.caption)
+                            .fontWeight(.bold)
+                            .padding(.top, 2)
+                            .foregroundColor(.blue)
+                    }
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+            }
+        }
+    }
+    
+    var websiteSection: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            if let websiteURLString = vm.websiteURL,
+               let websiteURL = URL(string: websiteURLString) {
+                Link("Website", destination: websiteURL)
+            }
+            if let redditURLString = vm.reditURL,
+               let redditURL = URL(string: redditURLString) {
+                Link("Reddit", destination: redditURL)
+            }
+        }
+        .foregroundColor(.blue)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .font(.headline)
     }
 }

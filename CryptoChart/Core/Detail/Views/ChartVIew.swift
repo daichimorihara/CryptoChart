@@ -47,7 +47,7 @@ struct ChartVIew: View {
         .foregroundColor(.theme.secondaryText)
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                withAnimation(.linear(duration: 0.5)) {
+                withAnimation(.linear(duration: 1.0)) {
                     percentage = 1.0
                 }
             }
@@ -82,6 +82,7 @@ extension ChartVIew {
             }
             .trim(from: 0, to: percentage)
             .stroke(lineColor, style: StrokeStyle(lineWidth: 2, lineCap: .round, lineJoin: .round))
+            .shadow(color: lineColor, radius: 10, x: 0.0, y: 10)
         }
     }
     

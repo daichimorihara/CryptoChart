@@ -13,6 +13,7 @@ struct HomeView: View {
     @State private var showPortfolioView = false // new sheet
     @State private var selectedCoin: CoinModel?
     @State private var showDetailView = false
+    @State private var showSettingsView = false
     
     var body: some View {
         ZStack {
@@ -33,8 +34,20 @@ struct HomeView: View {
                         .transition(.move(edge: .leading))
                 }
                 if showPortfolio {
-                    portfolioCoinsList
-                        .transition(.move(edge: .trailing))
+                    
+                    ZStack {
+                        if vm.portfolioCoins.isEmpty && vm.searchText.isEmpty {
+                            Text("You haven't added any coin your portfolio yet. Click the + button to get started.")
+                                .font(.callout)
+                                .foregroundColor(.theme.accent)
+                                .multilineTextAlignment(.center)
+                                .padding(50)
+                        } else {
+                            portfolioCoinsList
+                                .transition(.move(edge: .trailing))
+                        }
+                    }
+                    
                 }
                 Spacer(minLength: 0)
             }
@@ -44,6 +57,9 @@ struct HomeView: View {
                            destination: { DetailLoadingView(coin: $selectedCoin) },
                            label: { EmptyView() })
         )
+        .sheet(isPresented: $showSettingsView) {
+            SettingsView()
+        }
   
     }
 }
@@ -71,6 +87,8 @@ extension HomeView {
                 .onTapGesture {
                     if showPortfolio {
                         showPortfolioView.toggle()
+                    } else {
+                        showSettingsView.toggle()
                     }
                 }
                 .background(
@@ -114,6 +132,7 @@ extension HomeView {
             ForEach(vm.portfolioCoins) { coin in
                 CoinRowView(coin: coin, showHoldingsColumn: true)
                     .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 10))
+                    .contentShape(Rectangle())
                     .onTapGesture {
                         segue(coin: coin)
                     }
